@@ -1,0 +1,27 @@
+21 Feb 2022
+
+* Notes *
+For UseCaseDiagram:-
+
+         Add Previous ongoing ride if Possible.
+         we ask about hardcoded distance.
+         Admin - view Feedback.
+         extend - Sign In, Sign Up
+         
+For DataBase:-
+
+           Tables :
+
+           1. Admin - add Fname,Lname, or more properties.
+           2. Customer_Info_Table - add state, City, PinCode
+           3. Driver_details - add state,isActive,Address,Email.
+           4. Vehicle - change title (vehicle_name), add Vehicle brand, Vehicle Registration No.
+           5. Feedback - add one more column = booking_Id
+           6. Ongoing_ride - change title (booking), Remove driver phone no,add booking status,ride status.
+           7. History table deleted.
+           
+        
+We Are divide our work are as follows:
+          For FrontEnd : Dhiraj , Prajakta , Ashwini.
+          For BackEnd : Kalpit , Pranav , Rahul.
+ 
