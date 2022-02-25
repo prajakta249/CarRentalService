@@ -24,11 +24,13 @@ DROP TABLE IF EXISTS `admin_credentials`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `admin_credentials` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `user` varchar(50) DEFAULT NULL,
+  `firstname` varchar(50) DEFAULT NULL,
+  `lastname` varchar(50) DEFAULT NULL,
+  `phone_no` varchar(10) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,8 +39,48 @@ CREATE TABLE `admin_credentials` (
 
 LOCK TABLES `admin_credentials` WRITE;
 /*!40000 ALTER TABLE `admin_credentials` DISABLE KEYS */;
-INSERT INTO `admin_credentials` VALUES (1,'Admin','admin','admin'),(2,'Admin2','admin','adminpass');
+INSERT INTO `admin_credentials` VALUES (1,'Kalpit','Vyas','7972381305','kalpit','kalpit@123'),(2,'Pranav','Wagh','8552968489','pranav','pranav@123'),(3,'Rahul','Baghel','7389733980','rahul','rahul@123');
 /*!40000 ALTER TABLE `admin_credentials` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `booking`
+--
+
+DROP TABLE IF EXISTS `booking`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `booking` (
+  `ongoing_id` int NOT NULL AUTO_INCREMENT,
+  `customer_id` int DEFAULT NULL,
+  `vehicle_id` int DEFAULT NULL,
+  `driver_id` int DEFAULT NULL,
+  `booking_time` varchar(50) DEFAULT (curtime()),
+  `booking_date` varchar(50) DEFAULT (curdate()),
+  `journey_time` varchar(50) DEFAULT (curtime()),
+  `journey_date` varchar(50) DEFAULT (curdate()),
+  `Total_ride_price` int DEFAULT NULL,
+  `source` varchar(100) NOT NULL,
+  `destination` varchar(100) NOT NULL,
+  `ride_status` int DEFAULT '0',
+  PRIMARY KEY (`ongoing_id`),
+  KEY `fk_userid` (`customer_id`),
+  KEY `fk_carreg` (`vehicle_id`),
+  KEY `fk_ond` (`driver_id`),
+  CONSTRAINT `fk_carreg` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicle` (`vehicle_id`),
+  CONSTRAINT `fk_ond` FOREIGN KEY (`driver_id`) REFERENCES `driver_details` (`driver_id`),
+  CONSTRAINT `fk_userid` FOREIGN KEY (`customer_id`) REFERENCES `customer_details` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `booking`
+--
+
+LOCK TABLES `booking` WRITE;
+/*!40000 ALTER TABLE `booking` DISABLE KEYS */;
+INSERT INTO `booking` VALUES (5,5,4,2,'11:34:06','2022-02-25','11:34:06','2022-02-25',500,'Pune','Mumbai',1);
+/*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -58,10 +100,11 @@ CREATE TABLE `customer_details` (
   `Email` varchar(50) DEFAULT NULL,
   `City` varchar(50) DEFAULT NULL,
   `Pincode` int DEFAULT NULL,
+  `State` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `phone_no` (`phone_no`),
   UNIQUE KEY `phone_no_2` (`phone_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +113,7 @@ CREATE TABLE `customer_details` (
 
 LOCK TABLES `customer_details` WRITE;
 /*!40000 ALTER TABLE `customer_details` DISABLE KEYS */;
-INSERT INTO `customer_details` VALUES (2,'John','Wick','8599678596','john','wick',NULL,NULL,NULL),(3,'Jack','Reacher','896685859','Jack','Reacher',NULL,NULL,NULL);
+INSERT INTO `customer_details` VALUES (4,'Pranav','Wagh','8552968489','pranav','pranav@123','waghpranav222@gmail.com','Auranagabad',431139,'Maharashtra'),(5,'Kalpit','Vyas','7972381305','kalpit','kalpit@123','kalpitvyas0716@gmail.com','Pune',431136,'Maharashtra'),(6,'Dhiraj','Chaudhari','7856953856','dhiraj','dhiraj@123','dhiraj@gmail.com','Pune',411041,'Maharashtra'),(7,'Ashwini','Aghav','8566953856','ashwini','ashwini@123','ashwini@gmail.com','Nashik',402341,'Maharashtra');
 /*!40000 ALTER TABLE `customer_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,14 +127,14 @@ DROP TABLE IF EXISTS `driver_details`;
 CREATE TABLE `driver_details` (
   `driver_id` int NOT NULL AUTO_INCREMENT,
   `driver_firstname` varchar(30) DEFAULT NULL,
-  `diver_lastname` varchar(50) DEFAULT NULL,
+  `driver_lastname` varchar(50) DEFAULT NULL,
   `driver_phone_no` varchar(10) DEFAULT NULL,
   `driver_license` varchar(50) DEFAULT NULL,
   `driver_status` tinyint(1) DEFAULT NULL,
   `city` varchar(50) DEFAULT NULL,
   `pincode` int DEFAULT NULL,
   PRIMARY KEY (`driver_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +143,7 @@ CREATE TABLE `driver_details` (
 
 LOCK TABLES `driver_details` WRITE;
 /*!40000 ALTER TABLE `driver_details` DISABLE KEYS */;
-INSERT INTO `driver_details` VALUES (1,'manoj','dupargude','9876543210','XX1001XXX',1,'Pune',431136),(2,'Ramesh','gupardude','9789654123','XX1002XXX',1,'Aurangabad ',431109),(3,'Suresh','Sharma','965849612','XX11021XX',1,'Nagpur',410215),(4,'Kishor','Verma','9856986112','XX11021XX',0,'Mumbai',400015);
+INSERT INTO `driver_details` VALUES (1,'manoj','dupargude','9876543210','XX1001XXX',1,'Pune',431136),(2,'Ramesh','sonule','9789654123','XX1002XXX',1,'Aurangabad ',431109),(3,'Suresh','Sharma','9658496124','XX11021XX',1,'Nagpur',410215),(4,'Kishor','Verma','9856986112','XX11021XX',0,'Mumbai',400015);
 /*!40000 ALTER TABLE `driver_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,13 +159,13 @@ CREATE TABLE `feedback` (
   `user_id` int DEFAULT NULL,
   `user_rating` int DEFAULT '4',
   `description` varchar(500) DEFAULT 'NA',
-  `ride_id` int DEFAULT NULL,
+  `ongoing_id` int DEFAULT NULL,
   PRIMARY KEY (`feedback_id`),
   KEY `fk_uid` (`user_id`),
-  KEY `fk_feedride` (`ride_id`),
-  CONSTRAINT `fk_feedride` FOREIGN KEY (`ride_id`) REFERENCES `ongoing_ride` (`ongoing_id`),
+  KEY `fk_feedride` (`ongoing_id`),
+  CONSTRAINT `fk_feedride` FOREIGN KEY (`ongoing_id`) REFERENCES `booking` (`ongoing_id`),
   CONSTRAINT `fk_uid` FOREIGN KEY (`user_id`) REFERENCES `customer_details` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,7 +174,6 @@ CREATE TABLE `feedback` (
 
 LOCK TABLES `feedback` WRITE;
 /*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
-INSERT INTO `feedback` VALUES (1,2,4,'Pick up and drop was smooth',NULL),(2,3,5,'Affordable',NULL);
 /*!40000 ALTER TABLE `feedback` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,43 +204,6 @@ INSERT INTO `location` VALUES (1,'Pune','Mumbai',250),(2,'Pune','Aurangabad',200
 UNLOCK TABLES;
 
 --
--- Table structure for table `ongoing_ride`
---
-
-DROP TABLE IF EXISTS `ongoing_ride`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `ongoing_ride` (
-  `ongoing_id` int NOT NULL AUTO_INCREMENT,
-  `customer_id` int DEFAULT NULL,
-  `vehicle_id` int DEFAULT NULL,
-  `driver_id` int DEFAULT NULL,
-  `book_time` varchar(100) DEFAULT (curtime()),
-  `booking_date` varchar(50) DEFAULT NULL,
-  `Total_ride_price` int DEFAULT NULL,
-  `source` varchar(100) NOT NULL,
-  `destination` varchar(100) NOT NULL,
-  `ride_status` int DEFAULT '0',
-  PRIMARY KEY (`ongoing_id`),
-  KEY `fk_userid` (`customer_id`),
-  KEY `fk_carreg` (`vehicle_id`),
-  KEY `fk_ond` (`driver_id`),
-  CONSTRAINT `fk_carreg` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicle` (`vehicle_id`),
-  CONSTRAINT `fk_ond` FOREIGN KEY (`driver_id`) REFERENCES `driver_details` (`driver_id`),
-  CONSTRAINT `fk_userid` FOREIGN KEY (`customer_id`) REFERENCES `customer_details` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ongoing_ride`
---
-
-LOCK TABLES `ongoing_ride` WRITE;
-/*!40000 ALTER TABLE `ongoing_ride` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ongoing_ride` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `payment`
 --
 
@@ -207,17 +212,20 @@ DROP TABLE IF EXISTS `payment`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `payment` (
   `payment_id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int DEFAULT NULL,
+  `customer_id` int DEFAULT NULL,
   `vehicle_id` int DEFAULT NULL,
   `Amount` int DEFAULT NULL,
-  `payment_date` varchar(100) DEFAULT (curdate()),
-  `payment_time` varchar(100) DEFAULT (curtime()),
+  `payment_date` varchar(20) DEFAULT (curdate()),
+  `payment_time` varchar(20) DEFAULT (curtime()),
+  `ongoing_id` int DEFAULT NULL,
   PRIMARY KEY (`payment_id`),
-  KEY `fk_user_id` (`user_id`),
+  KEY `fk_user_id` (`customer_id`),
   KEY `fk_carid` (`vehicle_id`),
+  KEY `fk_ongoingpayment` (`ongoing_id`),
   CONSTRAINT `fk_carid` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicle` (`vehicle_id`),
-  CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `customer_details` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `fk_ongoingpayment` FOREIGN KEY (`ongoing_id`) REFERENCES `booking` (`ongoing_id`),
+  CONSTRAINT `fk_user_id` FOREIGN KEY (`customer_id`) REFERENCES `customer_details` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -226,7 +234,6 @@ CREATE TABLE `payment` (
 
 LOCK TABLES `payment` WRITE;
 /*!40000 ALTER TABLE `payment` DISABLE KEYS */;
-INSERT INTO `payment` VALUES (1,2,1,1000,'2022-02-10','23:27:18'),(2,3,2,2000,'2022-02-10','23:27:27');
 /*!40000 ALTER TABLE `payment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,11 +250,10 @@ CREATE TABLE `vehicle` (
   `seating_capacity` int DEFAULT NULL,
   `vehicle_name` varchar(45) DEFAULT NULL,
   `brand_name` varchar(45) DEFAULT NULL,
-  `price` int DEFAULT NULL,
+  `price_per_km` double DEFAULT NULL,
   `fuel_type` varchar(50) DEFAULT NULL,
-  `booking_status` int DEFAULT '0',
   PRIMARY KEY (`vehicle_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -256,7 +262,7 @@ CREATE TABLE `vehicle` (
 
 LOCK TABLES `vehicle` WRITE;
 /*!40000 ALTER TABLE `vehicle` DISABLE KEYS */;
-INSERT INTO `vehicle` VALUES (1,'SEDAN',5,'VERNA','HYUNDAI',600,'petrol',0),(2,'SUV',6,'CRETA','HYUNDAI',800,'petrol',0);
+INSERT INTO `vehicle` VALUES (1,'SEDAN',5,'VERNA','HYUNDAI',15,'petrol'),(2,'SUV',6,'CRETA','HYUNDAI',20,'petrol'),(3,'Crossover',4,'S-Presso','Maruti',20,'Petrol'),(4,'SUV',7,'Safari','TATA',25,'Diesel'),(5,'Hatchback',5,'S-Cross','Maruti',18,'Petrol');
 /*!40000 ALTER TABLE `vehicle` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -269,4 +275,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-25  0:14:29
+-- Dump completed on 2022-02-25 11:38:26
