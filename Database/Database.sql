@@ -144,7 +144,7 @@ CREATE TABLE `driver_details` (
 
 LOCK TABLES `driver_details` WRITE;
 /*!40000 ALTER TABLE `driver_details` DISABLE KEYS */;
-INSERT INTO `driver_details` VALUES (1,'manoj','dupargude','9876543210','XX1001XXX',1,'Pune',431136,NULL),(2,'Ramesh','sonule','9789654123','XX1002XXX',1,'Aurangabad ',431109,NULL),(3,'Suresh','Sharma','9658496124','XX11021XX',1,'Nagpur',410215,NULL),(4,'Kishor','Verma','9856986112','XX11021XX',0,'Mumbai',400015,NULL);
+INSERT INTO `driver_details` VALUES (1,'manoj','dupargude','9876543210','XX1001XXX',1,'Pune',431136,NULL),(2,'Ramesh','sonule','9789654123','XX1002XXX',1,'Aurangabad ',431109,NULL),(3,'Suresh','Sharma','9658496124','XX11021XX',1,'Nagpur',410215,NULL),(4,'Kishor','Verma','9856986112','XX11021XX',0,'Mumbai',400015,NULL),(5,'Sanjiv','Kumar','9856986115','XX11024XX',1,'Bhopal',342023,NULL),(6,'Ravi','Verma','9856986562','XX11023XX',0,'Mumbai',400015,NULL);
 /*!40000 ALTER TABLE `driver_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,7 +201,7 @@ CREATE TABLE `location` (
 
 LOCK TABLES `location` WRITE;
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
-INSERT INTO `location` VALUES (1,'Pune','Mumbai',250),(2,'Pune','Aurangabad',200),(3,'Kolhapur','Pune',400),(4,'Kolhapur','Mumbai',450),(5,'Mumbai','Nashik',200),(6,'Ahemadnagar','Pune',120),(7,'Delhi','Mumbai',1000),(8,'Nagpur','Mumbai',600),(9,'Nagpur','Pune',500),(10,'Indore','Pune',600),(11,'Indore','Mumbai',500);
+INSERT INTO `location` VALUES (1,'Pune','Mumbai',250),(2,'Pune','Aurangabad',200),(3,'Kolhapur','Pune',400),(4,'Kolhapur','Mumbai',450),(5,'Mumbai','Nashik',200),(6,'Ahemadnagar','Pune',120),(7,'Delhi','Mumbai',1000),(8,'Nagpur','Mumbai',600),(9,'Nagpur','Pune',500),(10,'Indore','Pune',600),(11,'Indore','Mumbai',500),(12,'Pune','Amravati',550);
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,7 +264,7 @@ CREATE TABLE `vehicle` (
 
 LOCK TABLES `vehicle` WRITE;
 /*!40000 ALTER TABLE `vehicle` DISABLE KEYS */;
-INSERT INTO `vehicle` VALUES (1,'VERNA','HYUNDAI','SEDAN',5,15,'petrol'),(2,'CRETA','HYUNDAI','SUV',6,20,'petrol'),(3,'S-Presso','Maruti','Crossover',4,20,'Petrol'),(4,'Safari','TATA','SUV',7,25,'Diesel'),(5,'S-Cross','Maruti','Hatchback',5,18,'Petrol');
+INSERT INTO `vehicle` VALUES (1,'VERNA','HYUNDAI','SEDAN',5,15,'petrol'),(2,'CRETA','HYUNDAI','SUV',6,20,'petrol'),(3,'S-Presso','Maruti','Crossover',4,20,'Petrol'),(4,'Safari','TATA','SUV',7,25,'Diesel'),(5,'S-Cross','Maruti','Hatchback',5,18,'Petrol'),(6,'Bolero','Mahindra','SUV',6,20,'Diesel');
 /*!40000 ALTER TABLE `vehicle` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
