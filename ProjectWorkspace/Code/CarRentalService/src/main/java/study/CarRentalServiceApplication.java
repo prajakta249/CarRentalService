@@ -1,9 +1,9 @@
-package com.example.carrentalservice;
+package study;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-@EntityScan("com.example.carrentalservicee.entity")
+
 @SpringBootApplication
 public class CarRentalServiceApplication {
 

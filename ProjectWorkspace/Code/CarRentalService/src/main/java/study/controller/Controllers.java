@@ -1,20 +1,22 @@
-package com.example.carrentalservicee.controller;
+package study.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.carrentalservice.Repository;
-import com.example.carrentalservicee.entity.Vehicle;
+import study.MyRepository;
+import study.entity.Vehicle;
 
 @RestController
+@RequestMapping("controller")
 public class Controllers {
 
 	@Autowired
-	Repository repo; 
+	MyRepository repo; 
 	
 	@GetMapping("/hello")
 	public void hello() {

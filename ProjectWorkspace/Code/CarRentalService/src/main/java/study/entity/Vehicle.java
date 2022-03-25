@@ -1,4 +1,4 @@
-package com.example.carrentalservicee.entity;
+package study.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +22,10 @@ public class Vehicle {
 	private String vehicle_type;
 	@Column
 	private String vehicle_fuel_type;
+	
+	public Vehicle() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public Vehicle(int vehicle_seating_capacity, double vehicle_price_per_km, String vehicle_name,
 			String vehicle_brand_name, String vehicle_type, String vehicle_fuel_type) {
