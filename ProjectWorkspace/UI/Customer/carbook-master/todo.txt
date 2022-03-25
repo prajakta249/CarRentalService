@@ -1,0 +1,8 @@
+1. Removing unwanted Sections from the website
+2. updating the navbar to just Home, profile and Logout
+3. Finding Profile template
+4. Profile Template will have the sections like
+	a. Ride history.
+	b. Change password.
+	c. Details (username, email, address) with update button.
+	d. Logout
