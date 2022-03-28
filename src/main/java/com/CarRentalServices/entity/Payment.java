@@ -17,8 +17,6 @@ public class Payment {
 	private int customerId;
 	@Column(name="vehicle_id")
 	private int vehicleId;
-	@Column(name="ongoing_id")
-	private int ongoingId;
 	@Column(name="amount")
 	private int amount;
 	@Column(name="payment_date")
@@ -30,13 +28,12 @@ public class Payment {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Payment(int id, int customerId, int vehicleId, int ongoingId, int amount, String payment_date,
+	public Payment(int id, int customerId, int vehicleId, int amount, String payment_date,
 			String payment_time) {
 		super();
 		this.id = id;
 		this.customerId = customerId;
 		this.vehicleId = vehicleId;
-		this.ongoingId = ongoingId;
 		this.amount = amount;
 		this.payment_date = payment_date;
 		this.payment_time = payment_time;
@@ -66,14 +63,6 @@ public class Payment {
 		this.vehicleId = vehicleId;
 	}
 
-	public int getOngoingId() {
-		return ongoingId;
-	}
-
-	public void setOngoingId(int ongoingId) {
-		this.ongoingId = ongoingId;
-	}
-
 	public int getAmount() {
 		return amount;
 	}
@@ -100,8 +89,7 @@ public class Payment {
 
 	@Override
 	public String toString() {
-		return "Payment [id=" + id + ", customerId=" + customerId + ", vehicleId=" + vehicleId + ", ongoingId="
-				+ ongoingId + ", amount=" + amount + ", payment_date=" + payment_date + ", payment_time=" + payment_time
+		return "Payment [id=" + id + ", customerId=" + customerId + ", vehicleId=" + vehicleId + ", amount=" + amount + ", payment_date=" + payment_date + ", payment_time=" + payment_time
 				+ "]";
 	}
 	

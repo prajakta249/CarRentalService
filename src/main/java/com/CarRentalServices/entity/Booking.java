@@ -19,6 +19,8 @@ public class Booking {
 	private int vehicleId;
 	@Column(name="driver_id")
 	private int driverId;
+	@Column(name="payment_id")
+	private int paymentId;
 	@Column(name="booking_time")
 	private String bookingTime;
 	@Column(name="booking_date")
@@ -40,13 +42,17 @@ public class Booking {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Booking(int id, int customerId, int vehicleId, int driverId, String bookingTime, String bookingDate,
-			String journeyTime, String journeyDate, int totalPrice, String source, String destination, int rideStatus) {
-		super();
+	
+
+	public Booking(int id, int customerId, int vehicleId, int driverId, int paymentId, String bookingTime,
+			String bookingDate, String journeyTime, String journeyDate, int totalPrice, String source,
+			String destination, int rideStatus) {
+	
 		this.id = id;
 		this.customerId = customerId;
 		this.vehicleId = vehicleId;
 		this.driverId = driverId;
+		this.paymentId = paymentId;
 		this.bookingTime = bookingTime;
 		this.bookingDate = bookingDate;
 		this.journeyTime = journeyTime;
@@ -56,6 +62,20 @@ public class Booking {
 		this.destination = destination;
 		this.rideStatus = rideStatus;
 	}
+
+
+
+	public int getPaymentId() {
+		return paymentId;
+	}
+
+
+
+	public void setPaymentId(int paymentId) {
+		this.paymentId = paymentId;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -156,11 +176,12 @@ public class Booking {
 	@Override
 	public String toString() {
 		return "Booking [id=" + id + ", customerId=" + customerId + ", vehicleId=" + vehicleId + ", driverId="
-				+ driverId + ", bookingTime=" + bookingTime + ", bookingDate=" + bookingDate + ", journeyTime="
-				+ journeyTime + ", journeyDate=" + journeyDate + ", totalPrice=" + totalPrice + ", source=" + source
-				+ ", destination=" + destination + ", rideStatus=" + rideStatus + "]";
+				+ driverId + ", paymentId=" + paymentId + ", bookingTime=" + bookingTime + ", bookingDate="
+				+ bookingDate + ", journeyTime=" + journeyTime + ", journeyDate=" + journeyDate + ", totalPrice="
+				+ totalPrice + ", source=" + source + ", destination=" + destination + ", rideStatus=" + rideStatus
+				+ "]";
 	}
-	
+
 	
 	
 }
