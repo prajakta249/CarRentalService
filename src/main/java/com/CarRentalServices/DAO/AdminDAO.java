@@ -16,10 +16,9 @@ public class AdminDAO {
 	
 	@Autowired
 	AdminRepository adminRepo;
-	@Autowired
-	HttpSession session;
 
-	public boolean verify(String username, String password) {
+
+	public boolean verify(String username, String password, HttpSession session) {
 
 		Admin obj = adminRepo.findAdmin(username, password);
 		if(obj!=null)

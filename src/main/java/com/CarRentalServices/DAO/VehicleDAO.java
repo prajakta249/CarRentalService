@@ -20,8 +20,9 @@ public class VehicleDAO {
 	@Autowired
 	DriverDAO driverDao;
 	
-	@Autowired
-	Session session;
+	/*
+	 * @Autowired Session session;
+	 */
 	
 	public List<Vehicle> getAll() {
 		
@@ -40,8 +41,8 @@ public class VehicleDAO {
 		if(vehicle!=null)
 		{
 			toogleVehicleState(vehicle.getVehicle_id());
-			driverDao.assignDriver();
-			Session.map.put("vehicleId", vehicle.getVehicle_id());
+			driverDao.assignDriver(session);
+//			Session.map.put("vehicleId", vehicle.getVehicle_id());
 			session.setAttribute("vehicleId", vehicle.getVehicle_id());
 		}
 		return vehicle;

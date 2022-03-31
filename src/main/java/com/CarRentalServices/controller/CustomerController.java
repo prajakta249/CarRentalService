@@ -2,6 +2,8 @@ package com.CarRentalServices.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +32,18 @@ public class CustomerController {
 	@Autowired
 	CustomerDAO dao;
 	
+	@Autowired
+	HttpServletRequest request;
+	
 	//http://localhost:8080/CustomerLogin/customerlogin.html
 	
 	@GetMapping("/verify/{username}/{password}")
-	public boolean verifyCustomer(@PathVariable String username, @PathVariable String password)
+	public boolean verifyCustomer(@PathVariable String username,
+			@PathVariable String password/* , HttpServletRequest request */)
 	{
+		HttpSession session = request.getSession();
 		boolean status = false;
-		status = dao.verify(username, password);
+		status = dao.verify(username, password, session);
 		return status;
 	}
 	
@@ -63,9 +70,33 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/update")
-	public void updateCustomer(@RequestBody Customer obj)
+	public void updateCustomer(@RequestBody Customer obj/* , HttpServletRequest request */)
 	{
-		dao.update(obj);
+		dao.update(obj, request.getSession());
 	}
+	
+	@GetMapping("/getbyid")
+	public Customer getById(/* HttpServletRequest request */)
+	{
+		HttpSession session = request.getSession();
+		Customer customer = dao.getById(session);
+		return customer;
+	}
+	
+	@PostMapping("/changepassword/{oldpassword}/{newpassword}")
+	public boolean changePassword(@PathVariable("newpassword") String password,
+			@PathVariable("oldpassword") String oldPassword/* , HttpServletRequest req */)
+	{
+		HttpSession session =  request.getSession();
+		boolean status = dao.changePassword(password, oldPassword,session);
+		return status;
+	}
+	
+	@GetMapping("/logout")
+	public void logout()
+	{
+		request.getSession().invalidate();
+	}
+	
 	
 }

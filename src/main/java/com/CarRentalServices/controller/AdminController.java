@@ -2,6 +2,8 @@ package com.CarRentalServices.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +25,12 @@ public class AdminController {
 	@Autowired
 	AdminDAO dao;
 	@Autowired
-	HttpSession session;
+	HttpServletRequest request;
 
 	@GetMapping("/verify/{username}/{password}")
 	public boolean verifyAdmin(@PathVariable("username") String username, @PathVariable("password") String password) {
 
-		boolean status = dao.verify(username, password);
+		boolean status = dao.verify(username, password, request.getSession());
 		
 		return status;
 	}

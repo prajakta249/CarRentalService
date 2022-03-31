@@ -13,13 +13,13 @@ public class Session {
 	
 	public static Map<String, Object> map;
 	
-	public Session() {
-		
+	public Session() 
+	{
 		map = new HashMap<String, Object>();
 		System.out.println("session object created");
 	}
-		// session TODO
-	
+		
+	// session TODO
 	@Override
 	public String toString() {
 		return "Session [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()

@@ -2,6 +2,8 @@ package com.CarRentalServices.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,9 @@ public class DriverController {
 
 	@Autowired
 	DriverDAO dao;
+	
+	@Autowired
+	HttpServletRequest request;
 	
 	@GetMapping("/getAll")
 	public List<Driver> getAll()
@@ -52,7 +57,7 @@ public class DriverController {
 	@GetMapping("/assignDriver")
 	public void assignDriver()
 	{
-		dao.assignDriver();     // after invoking this method automatically driver will be assign and his id will be stored in the session
+		dao.assignDriver(request.getSession());     // after invoking this method automatically driver will be assign and his id will be stored in the session
 	}
 	
 	@PostMapping("/update")

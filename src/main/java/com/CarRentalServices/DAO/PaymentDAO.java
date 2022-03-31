@@ -16,14 +16,16 @@ public class PaymentDAO {
 	@Autowired
 	PaymentRepository paymentRepo;
 	
-	@Autowired
-	Session session;
+	/*
+	 * @Autowired Session session;
+	 */
+	
 	
 	  public void makePayment(Payment obj, HttpSession session) {
 		  
 		  Payment newObj =  paymentRepo.save(obj);
 		  System.out.println(newObj);
-		  Session.map.put("paymentId", newObj.getId());
+//		  Session.map.put("paymentId", newObj.getId());
 		  session.setAttribute("paymentId", newObj.getId());
 		  // todo add amount
 	  }
