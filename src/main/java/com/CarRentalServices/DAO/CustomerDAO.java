@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.CarRentalServices.Session.Session;
 import com.CarRentalServices.entity.Customer;
 import com.CarRentalServices.repository.AdminRepository;
 import com.CarRentalServices.repository.CustomerRepository;
@@ -29,13 +30,22 @@ public class CustomerDAO  {
 	@Autowired
 	VehicleRepository vehicleRepo;
 	
+	/*
+	 * @Autowired HttpSession session;
+	 */
+		
 	@Autowired
-	HttpSession session;
-
-	public void addCustomer(Customer obj) {
+	Session session;
+	
+	
+	public boolean addCustomer(Customer obj) {
 
 	  Customer newObj = customerRepo.save(obj);
 	  System.out.println(newObj);
+	  if(newObj!=null)
+		  return true;
+	  else
+		  return false;
 	}
 
 	public List<Customer> getAll() {
@@ -59,14 +69,15 @@ public class CustomerDAO  {
 
 	public void update(Customer obj) {
 		
+		int id = (int)Session.map.get("currentCustomer");
+		obj.setId(id);
 		Customer oldObj = customerRepo.findById(obj.getId()).get();
 		
 		if(oldObj!=null)
 		{
 			obj.setId(obj.getId());
 			
-			
-			if(!oldObj.getCity().equals(obj.getCity()))
+			if((!oldObj.getCity().equals(obj.getCity())  ))
 			{
 				oldObj.setCity(obj.getCity());
 			}
@@ -82,9 +93,13 @@ public class CustomerDAO  {
 			{
 				oldObj.setFirstname(obj.getFirstname());
 			}
-			if(!oldObj.getUsername().equals(obj.getUsername()))
+			if(!oldObj.getUsername().equals(obj.getUsername()) && (obj.getUsername()!=null))
 			{
 				oldObj.setUsername(obj.getUsername());
+			}
+			if(!oldObj.getPassword().equals(obj.getPassword()) && (obj.getPassword()!=null))
+			{
+				oldObj.setPassword(obj.getPassword());
 			}
 			if(!oldObj.getLastname().equals(obj.getLastname()))
 			{
@@ -99,25 +114,24 @@ public class CustomerDAO  {
 				oldObj.setState(obj.getState());
 			}
 			customerRepo.save(oldObj);
-		}
-		
+		}	
 	}
 
-	public boolean verify(String username, String password) {
+	public boolean verify(String username, String password/* , HttpSession session */) {
 
 		Customer obj = customerRepo.findCustomer(username, password);
 		
 		if(obj!=null)
 		{
 			System.out.println(obj);
-			session.setAttribute("currentUser", obj.getId());
+			Session.map.put("currentCustomer", obj.getId());
+//			session.setAttribute("customerId", obj.getId());
 			return true;
 		}
 		else
 		{
 			return false;
 		}
-
 	}
 
 

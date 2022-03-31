@@ -15,7 +15,7 @@ public class Admin {
 	@Column(name="admin_lastname")
 	private String lastname;
 	@Column(name="admin_contact_number")
-	private String ContactNumber;
+	private String contactNumber;
 	@Column(name="admin_username")
 	private String username;
 	@Column(name="admin_password")
@@ -26,11 +26,10 @@ public class Admin {
 	}
 	
 	public Admin(int id, String firstname, String lastname, String contactNumber, String username, String password) {
-		super();
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
-		ContactNumber = contactNumber;
+		this.contactNumber = contactNumber;
 		this.username = username;
 		this.password = password;
 	}
@@ -60,11 +59,11 @@ public class Admin {
 	}
 
 	public String getContactNumber() {
-		return ContactNumber;
+		return contactNumber;
 	}
 
 	public void setContactNumber(String contactNumber) {
-		ContactNumber = contactNumber;
+		contactNumber = contactNumber;
 	}
 
 	public String getUsername() {
@@ -86,7 +85,7 @@ public class Admin {
 	@Override
 	public String toString() {
 		return "Admin [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", ContactNumber="
-				+ ContactNumber + ", username=" + username + ", password=" + password + "]";
+				+ contactNumber + ", username=" + username + ", password=" + password + "]";
 	}
 
 	

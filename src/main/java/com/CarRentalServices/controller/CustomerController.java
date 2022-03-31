@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,14 +22,15 @@ import com.CarRentalServices.repository.CustomerRepository;
 import com.CarRentalServices.repository.DriverRepository;
 import com.CarRentalServices.repository.VehicleRepository;
 
+@CrossOrigin
 @RestController
 @RequestMapping("carrentalservices")
 public class CustomerController {
 	
 	@Autowired
 	CustomerDAO dao;
-	@Autowired
-	HttpSession session;
+	
+	//http://localhost:8080/CustomerLogin/customerlogin.html
 	
 	@GetMapping("/verify/{username}/{password}")
 	public boolean verifyCustomer(@PathVariable String username, @PathVariable String password)
@@ -39,10 +41,12 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/add")
-	public void addCustomer(@RequestBody Customer obj)
+	public boolean addCustomer(@RequestBody Customer obj)
 	{
-		dao.addCustomer(obj);
+		boolean status = false;
+		status = dao.addCustomer(obj);
 		System.out.println(obj);
+		return status;
 	}
 	
 	@GetMapping("/getAll")
@@ -58,14 +62,10 @@ public class CustomerController {
 		dao.deleteCustomer(id);
 	}
 	
-	
 	@PostMapping("/update")
 	public void updateCustomer(@RequestBody Customer obj)
 	{
 		dao.update(obj);
 	}
-	
-	
-	
 	
 }

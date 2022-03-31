@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity(name="booking")
 public class Booking {
@@ -21,21 +22,21 @@ public class Booking {
 	private int driverId;
 	@Column(name="payment_id")
 	private int paymentId;
-	@Column(name="booking_time")
+	@Column(name="booking_time",columnDefinition="varchar(50) default (curtime())")
 	private String bookingTime;
-	@Column(name="booking_date")
+	@Column(name="booking_date",columnDefinition="varchar(50) default (curdate())")
 	private String bookingDate;
 	@Column(name="journey_time")
 	private String journeyTime;
 	@Column(name="journey_date")
 	private String journeyDate;
 	@Column(name="Total_ride_price")
-	private int totalPrice;
+	private int totalPrice;          // to be removed from database
 	@Column(name="source")
 	private String source;
 	@Column(name="destination")
 	private String destination;
-	@Column(name="ride_status")
+	@Column(name="ride_status", columnDefinition="int default 1")
 	private int rideStatus;
 	
 	public Booking() {

@@ -46,6 +46,4 @@ public class AdminController {
 		return list;
 	}
 
-	
-
 }

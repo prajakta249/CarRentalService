@@ -2,6 +2,8 @@ package com.CarRentalServices.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,11 +35,20 @@ public class VehicleController {
 		dao.addVehicle(obj);
 	}
 	
-	@GetMapping("/getbyid/{id}")
-	public Vehicle getVehicleById(@PathVariable("id") String i )
+	@GetMapping("/choosevehicle/{id}")
+	public Vehicle getVehicleById(@PathVariable("id") String i, HttpSession session)
 	{
 		int id = Integer.parseInt(i);
-		Vehicle vehicle =  dao.getById(id);
+		Vehicle vehicle =  dao.getById(id, session);
 		return vehicle;
 	}
+	
+	@GetMapping("/getavaiblevehicle")
+	public List<Vehicle> getAvailableVehicle()
+	{
+		List<Vehicle> list = dao.getAvailableVehicle();
+		return list;
+	}
+	
+	
 }

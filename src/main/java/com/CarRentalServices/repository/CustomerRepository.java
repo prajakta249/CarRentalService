@@ -10,7 +10,7 @@ import com.CarRentalServices.entity.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 	
-	@Query(value="select * from customer_details a where a.customer_username=:username and a.customer_password=:password", nativeQuery = true )
+	@Query(value="select * from customer_details a where a.customer_username=:username and a.customer_password=:password limit 1", nativeQuery = true )
 	public Customer findCustomer(@Param("username") String username, @Param("password") String password);
 	
 

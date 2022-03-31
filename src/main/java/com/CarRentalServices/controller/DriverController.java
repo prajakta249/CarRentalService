@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.CarRentalServices.DAO.DriverDAO;
 import com.CarRentalServices.entity.Driver;
+import com.CarRentalServices.repository.DriverRepository;
 
 @RestController
 @RequestMapping("driver")
@@ -47,5 +48,19 @@ public class DriverController {
 		int id = Integer.parseInt(i);
 		dao.toggleStatus(id);
 	}
+	
+	@GetMapping("/assignDriver")
+	public void assignDriver()
+	{
+		dao.assignDriver();     // after invoking this method automatically driver will be assign and his id will be stored in the session
+	}
+	
+	@PostMapping("/update")
+	public void updateDriver(@RequestBody Driver driver)
+	{
+		dao.updateDriver(driver);
+	}
+	
+	
 	
 }

@@ -9,6 +9,7 @@ import javax.persistence.Id;
 @Entity(name="feedback")
 public class Feedback {
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="feedback_id")

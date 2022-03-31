@@ -24,7 +24,7 @@ public class FeedbackController {
 	@PostMapping("/add")
 	public void giveFeedback(@RequestBody Feedback obj)
 	{
-		dao.giveFeedback(obj);
+		dao.giveFeedback(obj); 
 	}
 	
 	@GetMapping("/getFeedbackCustomerId/{id}")

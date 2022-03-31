@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.CarRentalServices.Session.Session;
 import com.CarRentalServices.entity.Driver;
 import com.CarRentalServices.repository.DriverRepository;
 
@@ -13,6 +14,9 @@ public class DriverDAO {
 
 	@Autowired
 	DriverRepository driverRepo;
+	
+	@Autowired
+	Session session;
 	
 	public List<Driver> getAll() {
 		
@@ -48,6 +52,30 @@ public class DriverDAO {
 			obj.setStatus(1);
 		}
 		driverRepo.save(obj);
+	}
+
+	public void assignDriver() {
+
+		Driver driver = driverRepo.assignDriver();
+		
+		if(driver!=null)
+		{
+			driver.setStatus(0);
+			driverRepo.save(driver);
+			session.map.put("driverId", driver.getId());          // TODO throw exception when no driver is availble
+		}
+		
+	}
+
+	public void updateDriver(Driver driver) {
+
+		/*
+		 * Driver obj = driverRepo.findById(driver.getId()).get();
+		 * 
+		 * if(obj!=null) { obj.setCity(driver.getCity()); }
+		 */
+		
+		driverRepo.save(driver);         //TODO
 	}
 	
 }
