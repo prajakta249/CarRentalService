@@ -26,11 +26,9 @@
       
       //$('#mydiv').attr('data-myval');
       $.ajax({
-        
         url:`/booking/getRideHistory`,
         type:"GET",
         success:(data)=>{
-          
           console.log(data);
           console.log(obj);
          // var t = $(`<table cellpadding="0" cellspacing="0" border="0"><tbody></tbody><table>`)
@@ -38,7 +36,6 @@
           var t = $(`<table><table>`)
             for(var i=0; i<data.length; i++)
             {
-                
               t.append(`<tr>
                 <td>${i+1}</td>
                 <td>${data[i].carModel}</td>
@@ -54,18 +51,14 @@
           {
         	  $("#tb").append(t);
           }
-            
           }
         })
-        
-        
       })
 
       function BookingId(ele)
       {
         console.log("in the booking id ")
         // href="contact.html"
-        
         var bookingId = ele.getAttribute("data-bookingId")
         $.ajax({
           url:`/feedback/bookingId/${bookingId}`,
@@ -123,10 +116,10 @@
               
               <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
                 <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                  <li class=" font-size-18"><a href="index.html" class="nav-link">Home</a></li>
+                  <li class="active font-size-18"><a href="index.html" class="nav-link">Home</a></li>
                   <li><a class="font-size-18" href="services.html" class="nav-link">Profile</a></li>
-                  <li><a class=" active font-size-18" href="about.html" class="nav-link">Ride History</a></li>
-                  <li><a  class="font-size-18" href="Login.html" class="nav-link">Log Out</a></li>
+                  <li><a class="font-size-18" href="about.html" class="nav-link">Ride History</a></li>
+                  <li><a  class="font-size-18" href="http://localhost:8080" class="nav-link">Log Out</a></li>
                   <!-- <li><a href="contact.html" class="nav-link">Contact</a></li> -->
                 </ul>
               </nav>

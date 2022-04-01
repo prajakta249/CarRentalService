@@ -16,6 +16,9 @@ public class PaymentDAO {
 	@Autowired
 	PaymentRepository paymentRepo;
 	
+	@Autowired
+	BookingDAO bookingdao;
+	
 	/*
 	 * @Autowired Session session;
 	 */
@@ -27,7 +30,7 @@ public class PaymentDAO {
 		  System.out.println(newObj);
 //		  Session.map.put("paymentId", newObj.getId());
 		  session.setAttribute("paymentId", newObj.getId());
-		  // todo add amount
+		  bookingdao.bookRide(session);
 	  }
 	
 	

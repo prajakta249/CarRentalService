@@ -29,13 +29,7 @@ public class BookingController {
 	@Autowired
 	HttpServletRequest request;
 	
-	@PostMapping("/book/{bookingTime}/{bookingDate}/{amount}/{source}/{destination}")
-	public void bookRide(@PathVariable("bookingTime") String time, @PathVariable("bookingDate") String date, @PathVariable("source") String source, @PathVariable("destination") String destination )
-	{
-		HttpSession session = request.getSession();
-		dao.bookRide(time, date, source,destination, session);
-	}
-	
+
 	@PostMapping("/book/{source}/{destination}/{journeydate}/{journeytime}")
 	public void bookDetails(@PathVariable String source, @PathVariable String destination, @PathVariable String journeydate, @PathVariable String journeytime)
 	{

@@ -87,6 +87,7 @@ public class CustomerController {
 	public boolean changePassword(@PathVariable("newpassword") String password,
 			@PathVariable("oldpassword") String oldPassword/* , HttpServletRequest req */)
 	{
+		System.out.println("in the change password");
 		HttpSession session =  request.getSession();
 		boolean status = dao.changePassword(password, oldPassword,session);
 		return status;

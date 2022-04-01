@@ -1,5 +1,7 @@
 package com.CarRentalServices.DAO;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -20,18 +22,20 @@ public class BookingDAO {
 	@Autowired
 	BookingRepository bookingRepo;
 
-	/*
-	 * @Autowired Session session;
-	 */
-	public void bookRide(String time, String date, String source, String destination , HttpSession session ) {
+	
+	public void bookRide(HttpSession session) {
 
-		// need to make changes here after mapping
-
+		DateTimeFormatter dt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
+		System.out.println(dt.format(now));
+		System.out.println(time.format(now));
+	
 		Booking booking = new Booking();
-		booking.setJourneyTime(time);
-		booking.setJourneyDate(date);
-		booking.setSource(source);
-		booking.setDestination(destination);
+		booking.setJourneyTime((String)session.getAttribute("journeyTime"));
+		booking.setJourneyDate((String)session.getAttribute("journeyDate"));
+		booking.setSource((String)session.getAttribute("source"));
+		booking.setDestination((String)session.getAttribute("destination"));
 //		booking.setTotalPrice(intAmount);         // to be removed
 		booking.setRideStatus(1);
 
@@ -39,27 +43,17 @@ public class BookingDAO {
 		booking.setVehicleId((int)session.getAttribute("vehicleId"));
 		booking.setDriverId((int)session.getAttribute("driverId"));
 		booking.setPaymentId((int)session.getAttribute("paymentId"));
+		
+		booking.setBookingDate(dt.format(now));
+		booking.setBookingTime(time.format(now));
 
-
-		/*
-		 * booking.setCustomerId((int)Session.map.get("currentCustomer"));
-		 * booking.setVehicleId((int)Session.map.get("vehicleId"));
-		 * booking.setDriverId((int)Session.map.get("driverId"));
-		 * booking.setPaymentId((int)Session.map.get("paymentId"));
-		 */
 
 		Booking newObj = bookingRepo.save(booking);
 		//Session.map.put("bookingId", newObj.getId());
 		session.setAttribute("bookingId", newObj.getId());
 		System.out.println(newObj);
 	}
-	/*
-	 * public void returnVehicle() {
-	 * 
-	 * // TODO
-	 * 
-	 * }
-	 */
+	
 
 	public IBookingDTO getAllActiveRides() {
 

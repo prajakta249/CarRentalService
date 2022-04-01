@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpServerErrorException;
 
+import com.CarRentalServices.DAO.BookingDAO;
 import com.CarRentalServices.DAO.VehicleDAO;
 import com.CarRentalServices.entity.Vehicle;
 
@@ -23,6 +24,8 @@ public class VehicleController {
 
 	@Autowired
 	VehicleDAO dao;
+	
+	
 	
 	@Autowired
 	HttpServletRequest request;
@@ -45,6 +48,7 @@ public class VehicleController {
 	{
 		int id = Integer.parseInt(i);
 		Vehicle vehicle =  dao.getById(id, request.getSession());
+		//bdao.bookRide(request.getSession());
 		return vehicle;
 	}
 	
