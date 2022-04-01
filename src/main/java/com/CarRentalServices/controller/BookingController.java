@@ -1,5 +1,7 @@
 package com.CarRentalServices.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.CarRentalServices.DAO.BookingDAO;
 import com.CarRentalServices.DTO.IBookingDTO;
+import com.CarRentalServices.DTO.IRideDTO;
 
 @RestController
 @RequestMapping("booking")
@@ -27,11 +30,22 @@ public class BookingController {
 	HttpServletRequest request;
 	
 	@PostMapping("/book/{bookingTime}/{bookingDate}/{amount}/{source}/{destination}")
-	public void bookRide(@PathVariable("bookingTime") String time, @PathVariable("bookingDate") String date, @PathVariable("amount") String amount, @PathVariable("source") String source, @PathVariable("destination") String destination )
+	public void bookRide(@PathVariable("bookingTime") String time, @PathVariable("bookingDate") String date, @PathVariable("source") String source, @PathVariable("destination") String destination )
 	{
-		int intAmount = Integer.parseInt(amount);
 		HttpSession session = request.getSession();
-		dao.bookRide(time, date, intAmount, source,destination, session);
+		dao.bookRide(time, date, source,destination, session);
+	}
+	
+	@PostMapping("/book/{source}/{destination}/{journeydate}/{journeytime}")
+	public void bookDetails(@PathVariable String source, @PathVariable String destination, @PathVariable String journeydate, @PathVariable String journeytime)
+	{
+		HttpSession session = request.getSession();
+		session.setAttribute("journeyDate", journeydate);
+		session.setAttribute("journeyTime", journeytime);
+		session.setAttribute("source", source);
+		session.setAttribute("destination", destination);
+		System.out.println(journeydate+" " +journeytime+" "+source+" "+destination);
+		System.out.println((String)session.getAttribute("journeyTime"));
 	}
 	
 	/*
@@ -49,6 +63,13 @@ public class BookingController {
 	public IBookingDTO getAllRides()
 	{
 		return dao.getAllRides();
+	}
+	
+	@GetMapping("/getRideHistory")
+	public List<IRideDTO> getRideHistory()
+	{
+	  List<IRideDTO> list = dao.getRideHistory(request.getSession());
+	  return list;
 	}
 	
 	

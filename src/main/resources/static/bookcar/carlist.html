@@ -1,8 +1,10 @@
+
+   
 <!doctype html>
 <html lang="en">
 
   <head>
-    <title>Car Rent &mdash; Free Website Template by Colorlib</title>
+    <title>CarOnDemand &mdash; Free Website Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -20,36 +22,10 @@
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-      $(document).ready(()=>{
-        $.ajax({
-          url:"/vehicle/getAll",
-          type:"GET",
-          success:(data)=>{
-        	  
-              var t = $(`<table class="table table-dark table-responsive-lg mr-auto ml-auto"><tbody></tbody></table>`)
-              $.each(data, function(i, val){
-            	  
-                console.log(i, val);
-                var id = val.vehicle_id;
-                var name=val.vehicle_name;
-                var price = val.ehicle_price_per_km;
-                var seatingCapacity = val.vehicle_seating_capacity;
-                var type = val.vehicle_type;
-                var fuel = val.fuel_type;
- 					
-              })	
-          }
-        })
-
-      })
-    </script>
-
 
   </head>
 
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  <body style="background-image: linear-gradient(to right,rgb(0, 0, 0),rgba(47, 110, 153, 0.267)) , url(images/supercar22.jpg) ;"  data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
     
     <div class="site-wrap" id="home-section">
@@ -63,8 +39,6 @@
         <div class="site-mobile-menu-body"></div>
       </div>
 
-
-
       <header class="site-navbar site-navbar-target" role="banner">
 
         <div class="container">
@@ -72,8 +46,7 @@
 
             <div class="col-3 ">
               <div class="site-logo">
-                <a href="index.html">CarRent</a>
-              </div>
+                <a class="font-size-25" href="index.html">CarOnDemand</a>              </div>
             </div>
 
             <div class="col-9  text-right">
@@ -85,11 +58,10 @@
 
               <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
                 <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                  <li class="active"><a href="index.html" class="nav-link">Home</a></li>
-                  <li><a href="services.html" class="nav-link">Profile</a></li>
-                  <li><a href="cars.html" class="nav-link">Cars</a></li>
-                  <li><a href="about.html" class="nav-link">Ride History</a></li>
-                  <li><a href="http://localhost:8080/CustomerLogin/customerlogin.html" class="nav-link">Blog</a></li>
+                  <li class="font-size-18"><a href="index.html" class="nav-link">Home</a></li>
+                  <li><a class="font-size-18" href="services.html" class="nav-link">Profile</a></li>
+                  <li><a class="font-size-18" href="about.html" class="nav-link">Ride History</a></li>
+                  <li><a  class="font-size-18" href="Login.html" class="nav-link">Log Out</a></li>
                   <!-- <li><a href="contact.html" class="nav-link">Contact</a></li> -->
                 </ul>
               </nav>
@@ -100,13 +72,107 @@
         </div>
 
       </header>
-
+              
      
       
-      <div style="background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);"> 
-       <div style="align-self: center; padding-top: 10%; padding-left: 30%; padding-bottom: 50%; padding-right: 30%;">
-       
-        <table class="table table-dark table-responsive-lg mr-auto ml-auto">
+       <div style="align-self: center; padding-top: 10%; padding-left: 5%;">
+        <div class="container mx-auto mt-4">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card1" style="width: 18rem;">
+          <img src="images\amaze.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">Amaze</h4>
+                <h6 class="card-subtitle mb-2 text-muted">Honda</h6>
+                <h6 class="card-subtitle mb-2 text-muted">5-Seater</h6>
+                <h6 class="card-subtitle mb-2 text-muted">sedan</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Rs.12/KM</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Petrol</h6>
+            <a href="payment.html" class="btn "><i class="fab fa-github"></i>Book</a>
+          </div>
+          </div>
+            </div>    
+
+               <div class="col-md-4">
+        <div class="card1" style="width: 18rem;">
+          <img src="images/sonet-exterior-right-front-three-quarter-109.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">Sonet</h4>
+                <h6 class="card-subtitle mb-2 text-muted">KIA</h6>
+                <h6 class="card-subtitle mb-2 text-muted">5-Seater</h6>
+                <h6 class="card-subtitle mb-2 text-muted">SUV</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Rs.15/KM</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Petrol</h6>
+                <a href="payment.html" class="btn "><i class="fab fa-github"></i>Book</a>
+              </div>
+          </div>
+            </div>    
+                  <div class="col-md-4">
+        <div class="card1" style="width: 18rem;">
+          <img src="images/seltos-exterior-right-front-three-quarter-3.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">Seltos</h4>
+                <h6 class="card-subtitle mb-2 text-muted">KIA</h6>
+                <h6 class="card-subtitle mb-2 text-muted">5-Seater</h6>
+                <h6 class="card-subtitle mb-2 text-muted">SUV</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Rs.15/KM</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Petrol</h6>
+                <a href="payment.html" class="btn "><i class="fab fa-github"></i>Book</a>
+              </div>
+          </div>
+          </div>
+            
+            <div class="col-md-4">
+              <div class="card1" style="width: 18rem;">
+          <img src="images/tata-nexon-right-front-three-quarter3.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">Nexon</h4>
+                <h6 class="card-subtitle mb-2 text-muted">TATA</h6>
+                <h6 class="card-subtitle mb-2 text-muted">5-Seater</h6>
+                <h6 class="card-subtitle mb-2 text-muted">SUV</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Rs.12/KM</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Diesel</h6>
+                <a href="payment.html" class="btn "><i class="fab fa-github"></i>Book</a>
+              </div>
+          </div>
+            </div>    
+               <div class="col-md-4">
+        <div class="card1" style="width: 18rem;">
+          <img src="images/baleno-exterior-right-front-three-quarter-2.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">Baleno</h4>
+                <h6 class="card-subtitle mb-2 text-muted">Maruti Suzuki</h6>
+                <h6 class="card-subtitle mb-2 text-muted">5-seater</h6>
+                <h6 class="card-subtitle mb-2 text-muted">HatchBack</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Rs.11/KM</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Petrol</h6>
+                <a href="payment.html" class="btn "><i class="fab fa-github"></i>Book</a>
+              </div>
+          </div>
+            </div>    
+                  <div class="col-md-4">
+        <div class="card1" style="width: 18rem;">
+          <img src="images/wagon-r-2022-exterior-right-front-three-quarter.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">Wagon R</h4>
+                <h6 class="card-subtitle mb-2 text-muted">Maruti Suzuki</h6>
+                <h6 class="card-subtitle mb-2 text-muted">4-Seater</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Mini Car</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Rs.10/KM</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Petrol</h6>
+                <a href="payment.html" class="btn "><i class="fab fa-github"></i>Book</a>
+              </div>
+          </div>
+          </div>
+            
+        
+    
+      </div>
+          
+
+
+
+        <!-- <table class="table table-light table-responsive-lg mr-auto ml-auto">
             <thead>
                 <tr>
                   <th scope="col">Sr. No</th>
@@ -117,35 +183,35 @@
             <tbody>
                 <tr>
                     <th scope="row">1</th>
-                    <td>CAR 1</td>
-                    <td><a href="payment.html" class="btn btn-outline-primary">Book</a></td>
+                    <td><img src="images\amaze.jpeg" alt="" height="75" width="150"></td>
+                    <td><br><a href="payment.html" class="btn btn-outline-primary">Book</a><br></td>
                   </tr>
                   <tr>
                     <th scope="row">2</th>
-                    <td>CAR 2</td>
-                    <td><a href="payment.html" class="btn btn-outline-primary">Book</a></td>
+                    <td><img src="images\verna.jpeg" alt="" height="75" width="150"></td>
+                    <td><br><a href="payment.html" class="btn btn-outline-primary">Book</a><br></td>
                   </tr>
                   <tr>
                     <th scope="row">3</th>
-                    <td>CAR 3</td>
-                    <td><a href="payment.html" class="btn btn-outline-primary">Book</a></td>
+                    <td><img src="images\sonet.jpeg" alt="" height="75" width="150"></td>
+                    <td><br><a href="payment.html" class="btn btn-outline-primary">Book</a><br></td>
                   </tr>
                   <tr>
                     <th scope="row">4</th>
-                    <td>CAR 4</td>
-                    <td><a href="payment.html" class="btn btn-outline-primary">Book</a></td>
+                    <td><img src="images\kushaq.jpeg" alt="" height="75" width="150"></td>
+                    <td><br><a href="payment.html" class="btn btn-outline-primary">Book</a><br></td>
                   </tr>
                   <tr>
                     <th scope="row">5</th>
-                    <td>CAR 5</td>
-                    <td><a href="payment.html" class="btn btn-outline-primary">Book</a></td>
+                    <td><img src="images\superb.jpeg" alt="" height="75" width="150"></td>
+                    <td><br><a href="payment.html" class="btn btn-outline-primary">Book</a><br></td>
                   </tr>
             </tbody>
               
 
-        </table>
+        </table> -->
        </div>
-       </div>
+       
     <!-- </div> -->
 
       <!-- <div class="container">
@@ -199,10 +265,6 @@
             </p>
           </div>
           <div class="col-lg-9">
-
-
-
-
             <div class="nonloop-block-13 owl-carousel">
               <div class="item-1">
                 <a href="#"><img src="images/img_1.jpg" alt="Image" class="img-fluid"></a>
@@ -241,8 +303,6 @@
                   </div>
                 </div>
               </div>
-
-
               <div class="item-1">
                 <a href="#"><img src="images/img_2.jpg" alt="Image" class="img-fluid"></a>
                 <div class="item-1-contents">
@@ -280,14 +340,12 @@
                   </div>
                 </div>
               </div>
-
             </div>
             
           </div>
         </div>
       </div>
     </div>
-
     <div class="site-section section-3" style="background-image: url('images/hero_2.jpg');">
       <div class="container">
         <div class="row">
@@ -332,8 +390,6 @@
         </div>
       </div>
     </div>
-
-
     <div class="container site-section mb-5">
       <div class="row justify-content-center text-center">
         <div class="col-7 text-center mb-5">
@@ -362,7 +418,6 @@
           <span class="number"><span>05</span></span>
           <span class="caption">Done</span>
         </div>
-
       </div>
     </div>
     
@@ -412,8 +467,6 @@
         </div>
       </div>
     </div>
-
-
     <div class="site-section bg-white">
       <div class="container">
         <div class="row justify-content-center text-center mb-5">
@@ -422,7 +475,6 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo assumenda, dolorum necessitatibus eius earum voluptates sed!</p>
           </div>
         </div>
-
         <div class="row">
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="post-entry-1 h-100">
@@ -452,7 +504,6 @@
               </div>
             </div>
           </div>
-
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="post-entry-1 h-100">
               <a href="single.html">
@@ -470,9 +521,7 @@
         </div>
       </div>
     </div>
-
     
-
     <footer class="site-footer">
       <div class="container">
         <div class="row">
@@ -535,11 +584,9 @@
             <!-- </p>
             </div>
           </div>
-
         </div>
       </div>
     </footer>
-
     </div> -->
 
     <script src="js/jquery-3.3.1.min.js"></script>

@@ -30,8 +30,9 @@ public class Booking {
 	private String journeyTime;
 	@Column(name="journey_date")
 	private String journeyDate;
-	@Column(name="Total_ride_price")
-	private int totalPrice;          // to be removed from database
+	/*
+	 * @Column(name="Total_ride_price") private int totalPrice;
+	 */         // to be removed from database
 	@Column(name="source")
 	private String source;
 	@Column(name="destination")
@@ -46,7 +47,7 @@ public class Booking {
 	
 
 	public Booking(int id, int customerId, int vehicleId, int driverId, int paymentId, String bookingTime,
-			String bookingDate, String journeyTime, String journeyDate, int totalPrice, String source,
+			String bookingDate, String journeyTime, String journeyDate, String source,
 			String destination, int rideStatus) {
 	
 		this.id = id;
@@ -58,25 +59,18 @@ public class Booking {
 		this.bookingDate = bookingDate;
 		this.journeyTime = journeyTime;
 		this.journeyDate = journeyDate;
-		this.totalPrice = totalPrice;
 		this.source = source;
 		this.destination = destination;
 		this.rideStatus = rideStatus;
 	}
 
-
-
 	public int getPaymentId() {
 		return paymentId;
 	}
 
-
-
 	public void setPaymentId(int paymentId) {
 		this.paymentId = paymentId;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -142,14 +136,6 @@ public class Booking {
 		this.journeyDate = journeyDate;
 	}
 
-	public int getTotalPrice() {
-		return totalPrice;
-	}
-
-	public void setTotalPrice(int totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-
 	public String getSource() {
 		return source;
 	}
@@ -178,8 +164,8 @@ public class Booking {
 	public String toString() {
 		return "Booking [id=" + id + ", customerId=" + customerId + ", vehicleId=" + vehicleId + ", driverId="
 				+ driverId + ", paymentId=" + paymentId + ", bookingTime=" + bookingTime + ", bookingDate="
-				+ bookingDate + ", journeyTime=" + journeyTime + ", journeyDate=" + journeyDate + ", totalPrice="
-				+ totalPrice + ", source=" + source + ", destination=" + destination + ", rideStatus=" + rideStatus
+				+ bookingDate + ", journeyTime=" + journeyTime + ", journeyDate=" + journeyDate + 
+				", source=" + source + ", destination=" + destination + ", rideStatus=" + rideStatus
 				+ "]";
 	}
 

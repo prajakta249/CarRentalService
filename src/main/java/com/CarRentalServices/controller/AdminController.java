@@ -31,7 +31,6 @@ public class AdminController {
 	public boolean verifyAdmin(@PathVariable("username") String username, @PathVariable("password") String password) {
 
 		boolean status = dao.verify(username, password, request.getSession());
-		
 		return status;
 	}
 	

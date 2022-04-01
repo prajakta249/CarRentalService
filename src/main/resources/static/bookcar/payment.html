@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head>
-    <title>Car Rent &mdash; Free Website Template by Colorlib</title>
+    <title>CarOnDemand &mdash; Free Website Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -23,7 +23,7 @@
 
   </head>
 
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  <body style="background-image: linear-gradient(to right,rgb(0, 0, 0),rgba(47, 110, 153, 0.267)) , url(images/supercar22.jpg) ;"  data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
     
     <div class="site-wrap" id="home-section">
@@ -46,8 +46,7 @@
 
             <div class="col-3 ">
               <div class="site-logo">
-                <a href="index.html">CarRent</a>
-              </div>
+                <a class="font-size-25" href="index.html">CarOnDemand</a>              </div>
             </div>
 
             <div class="col-9  text-right">
@@ -59,11 +58,10 @@
 
               <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
                 <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                  <li class="active"><a href="index.html" class="nav-link">Home</a></li>
-                  <li><a href="services.html" class="nav-link">Profile</a></li>
-                  <!-- <li><a href="cars.html" class="nav-link">Cars</a></li> -->
-                  <li><a href="about.html" class="nav-link">Ride History</a></li>
-                  <li><a href="Login.html" class="nav-link">Log Out</a></li>
+                  <li class=" font-size-18"><a href="index.html" class="nav-link">Home</a></li>
+                  <li><a class="font-size-18" href="services.html" class="nav-link">Profile</a></li>
+                  <li><a class="font-size-18" href="about.html" class="nav-link">Ride History</a></li>
+                  <li><a  class="font-size-18" href="Login.html" class="nav-link">Log Out</a></li>
                   <!-- <li><a href="contact.html" class="nav-link">Contact</a></li> -->
                 </ul>
               </nav>
@@ -77,31 +75,44 @@
 
      
       
-      <div style="background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);"> 
-       <div style="align-self: center; padding-top: 10%; padding-left: 30%; padding-bottom: 50%; padding-right: 30%;">
+       <div style="align-self: center; padding-top: 15%; padding-left: 30%;  padding-right: 30%;">
        
-        <div class="container p-0">
-            <div class="card px-4">
+        <div class="container p-0" >
+            <div class="card2 px-4" >
                 <p class="h8 py-3">Payment Details</p>
                 <div class="row gx-3">
                     <div class="col-12">
                         <div class="d-flex flex-column">
-                            <p class="text mb-1">Customer ID</p> <input class="form-control mb-3" type="number" placeholder="Customer ID" value="">
+                          <hc>Customer Name: </hc>
+                             <!-- <input class="form-control mb-3" readonly type="text" placeholder="Customer Name" value=""> -->
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="d-flex flex-column">
-                            <p class="text mb-1">Amount</p> <input class="form-control mb-3" type="text" placeholder="Amount">
+                          <hc>Amount: </hc>
+                             <!-- <input class="form-control mb-3 " readonly type="text" placeholder="Amount"> -->
+                        </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="d-flex flex-column">
+                        <hc>Source : </hc>
+                           <!-- <input class="form-control mb-3 " readonly type="text" placeholder="Source"> -->
+                      </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="d-flex flex-column">
+                         <hc>Destination: </hc>
+                    </div>
+                </div>
+                    <div class="col-6">
+                        <div class="d-flex flex-column">
+                            <p class="text mb-1">Booking Date</p> <input class="form-control mb-3" type="date" placeholder="MM/YYYY">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="d-flex flex-column">
-                            <p class="text mb-1">Payment Date</p> <input class="form-control mb-3" type="date" placeholder="MM/YYYY">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="d-flex flex-column">
-                            <p class="text mb-1">Payment Time</p> <input class="form-control mb-3 pt-2 " type="time" placeholder="">
+                            
+                            <p class="text mb-1">Booking Time</p> <input class="form-control mb-3 pt-2 " type="time" placeholder="">
                         </div>
                     </div>
                     <div class="col-12">

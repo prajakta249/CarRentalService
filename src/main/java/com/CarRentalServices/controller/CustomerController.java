@@ -92,6 +92,10 @@ public class CustomerController {
 		return status;
 	}
 	
+	
+	
+	
+	
 	@GetMapping("/logout")
 	public void logout()
 	{

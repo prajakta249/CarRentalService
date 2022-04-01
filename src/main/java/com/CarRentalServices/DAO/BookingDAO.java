@@ -1,5 +1,7 @@
 package com.CarRentalServices.DAO;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import com.CarRentalServices.DTO.BookingDTO;
 import com.CarRentalServices.DTO.IBookingDTO;
+import com.CarRentalServices.DTO.IRideDTO;
 import com.CarRentalServices.Session.Session;
 import com.CarRentalServices.entity.Booking;
 import com.CarRentalServices.repository.BookingRepository;
@@ -20,7 +23,7 @@ public class BookingDAO {
 	/*
 	 * @Autowired Session session;
 	 */
-	public void bookRide(String time, String date, int intAmount, String source, String destination , HttpSession session ) {
+	public void bookRide(String time, String date, String source, String destination , HttpSession session ) {
 
 		// need to make changes here after mapping
 
@@ -29,7 +32,7 @@ public class BookingDAO {
 		booking.setJourneyDate(date);
 		booking.setSource(source);
 		booking.setDestination(destination);
-		booking.setTotalPrice(intAmount);         // to be removed
+//		booking.setTotalPrice(intAmount);         // to be removed
 		booking.setRideStatus(1);
 
 		booking.setCustomerId((int)session.getAttribute("currentCustomer"));
@@ -68,5 +71,12 @@ public class BookingDAO {
 
 		return bookingRepo.getAllRide();
 
+	}
+
+	public List<IRideDTO> getRideHistory(HttpSession session) {
+		
+		int customerId = (int)session.getAttribute("currentCustomer");
+		List<IRideDTO> list = bookingRepo.getRideHistory(customerId);
+		return list;
 	}
 }

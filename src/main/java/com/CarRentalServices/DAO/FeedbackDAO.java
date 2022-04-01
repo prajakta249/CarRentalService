@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.CarRentalServices.DTO.IFeedbackDTO;
 import com.CarRentalServices.entity.Feedback;
 import com.CarRentalServices.repository.FeedbackRepository;
 
@@ -17,26 +18,35 @@ public class FeedbackDAO {
 	@Autowired
 	FeedbackRepository feedbackRepo;
 
-	public void giveFeedback(Feedback obj, HttpSession session) {
+	public boolean giveFeedback(Feedback obj, HttpSession session) {
 		
-		int bookingId = (int)session.getAttribute("bookingId");
-		int customerId = (int)session.getAttribute("currentUser");
+		int bookingId = (int)session.getAttribute("feedbackBookingId");
+		int customerId = (int)session.getAttribute("currentCustomer");
 
 		obj.setCustomerId(customerId);
 		obj.setOngoingId(bookingId);
 		Feedback feedback = feedbackRepo.save(obj);
-		System.out.println(feedback);
+		if(feedback!=null)
+		{
+			System.out.println(feedback);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
-	public List<Feedback> getFeedbackCustomerId(int id) {
-		List<Feedback> feedback = feedbackRepo.findByCustomerId(id);
-
+	public List<IFeedbackDTO> getFeedbackCustomerId(HttpSession session) {
+//		List<Feedback> feedback = feedbackRepo.findByCustomerId(id);
+		int customerId = (int) session.getAttribute("currentCustomer");
+		int bookingId = (int) session.getAttribute("feedbackBookingId");
+		List<IFeedbackDTO> feedback = feedbackRepo.getFeedback(customerId, bookingId);
 		return feedback;
 	}
 
 	public List<Feedback> getFeedbackOngoingId(int id) {
 		List<Feedback> feedback = feedbackRepo.findByCustomerId(id);
-
 		return feedback;
 	}
 
